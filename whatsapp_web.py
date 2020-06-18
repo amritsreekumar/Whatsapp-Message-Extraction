@@ -4,8 +4,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
-import time 
-import socket
+import time
 
 WAIT_FOR_CHAT_TO_LOAD = 9 # in secs
 
@@ -39,34 +38,13 @@ def chats():
 def scrape(prev):
     recentList = driver.find_element_by_xpath('//span[@title = "Anish Sir Founding Minds"]')
     #recentList.sort(key=lambda x: int(x.get_attribute('style').split("translateY(")[1].split('px')[0]), reverse=False)
-
     recentList.click()
     time.sleep(WAIT_FOR_CHAT_TO_LOAD)
     #input("click enter to start scan")
-    port = 1111                  
-    serv = socket.socket()             
-    host = socket.gethostbyname("")
-    serv.bind((host, port))          
-    serv.listen(5)
-    while True:
-        conn, addr = serv.accept()
-        #from_client = ''
-        while True:
-            data = conn.recv(4096)
-            '''if not data: break
-            from_client += data
-            print(from_client)''' #data recieved from the client
-            messages = chats()
-            string = "printing messages"
-            string = string.encode()
-            conn.send(string)
-            print(messages)
-            break
-        conn.close()
-    return
+    messages = chats()
+    return messages
 
-if __name__ == '__main__':
-    driver.get("https://web.whatsapp.com/")
-    driver.maximize_window() 
-    driver.implicitly_wait(20)
-    scrape(None)
+
+driver.get("https://web.whatsapp.com/")
+driver.maximize_window() 
+driver.implicitly_wait(20)
