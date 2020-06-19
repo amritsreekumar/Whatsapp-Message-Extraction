@@ -6,7 +6,20 @@ class HelloHandler(RequestHandler):
     def get(self):
         print("Request Received")
         messages = whatsapp_web.scrape(None)
-        self.write({'chatlog' : messages})
+        Dict = {}
+        Dict2 = {}
+        i = 0
+        for x in messages:
+        	if i%2 == 0:
+        		Dict['Anish'] = x
+        		Dict2[i] = Dict
+        	else:
+        		Dict['Amrit'] = x
+        		Dict2[i] = Dict
+        	Dict = {}
+        	i = i+1
+        print(Dict2)
+        self.write({'chatlog' : Dict2})
 
 def make_app():
     urls = [("/", HelloHandler)]
