@@ -1,7 +1,7 @@
 from tornado.web import Application, RequestHandler
 from tornado.ioloop import IOLoop
 import whatsapp_web
-
+import json
 class HelloHandler(RequestHandler):
     def get(self):
         print("Request Received")
@@ -13,8 +13,8 @@ class HelloHandler(RequestHandler):
         	else:
         		messages[i] = 'Amrit -- ' + x
         	i = i+1
-        print(messages)
-        self.write({'chatlog' : messages})
+        #print(messages)
+        self.write(json.dumps({'chatlog' : messages}))
 
 def make_app():
     urls = [("/", HelloHandler)]

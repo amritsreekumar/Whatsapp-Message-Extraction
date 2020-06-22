@@ -21,7 +21,7 @@ def chats():
     #superclass for message-in and message-out
     for messages in driver.find_elements_by_xpath("//div[contains(@class, '_2hqOq')]"):
         try:
-            print(messages)
+            #print(messages)
             message_container = messages.find_element_by_xpath(".//div[@class='copyable-text']")
             message = message_container.find_element_by_xpath(".//span[contains(@class,'selectable-text invisible-space copyable-text')]").text
             list_messages.append(message)
