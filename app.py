@@ -13,9 +13,9 @@ class HelloHandler(RequestHandler):
         i = 0
         for x in messages:
         	if i%2 == 0:
-        		messages[i] = 'Anish -- ' + x
+        		messages[i] = 'Peter -- ' + x
         	else:
-        		messages[i] = 'Amrit -- ' + x
+        		messages[i] = 'Timothy -- ' + x
         	i = i+1
         #print(messages)
         self.write(json.dumps({'chatlog' : messages}))

@@ -11,11 +11,11 @@ WAIT_FOR_CHAT_TO_LOAD = 9 # in secs
 
 message_dic = {}
 #place the chromedriver in the same path as your google chrome
-chrome_path = "/Users/amritsreekumar/Desktop/Whatsapp-Message-Extraction/chromedriver"
+chrome_path = "/chromedriver"
 driver = webdriver.Chrome(chrome_path)
 
 def chats():
-    name = driver.find_element_by_xpath('//span[@title = "Anish Sir Founding Minds"]').text
+    name = driver.find_element_by_xpath('//span[@title = "Name"]').text
     m_arg = '//div[@class="_9tCEa"]/div'
     list_messages = []
     #superclass for message-in and message-out
@@ -37,7 +37,7 @@ def chats():
 
 
 def scrape(prev):
-    recentList = driver.find_element_by_xpath('//span[@title = "Anish Sir Founding Minds"]')
+    recentList = driver.find_element_by_xpath('//span[@title = "Name"]')
     #recentList.sort(key=lambda x: int(x.get_attribute('style').split("translateY(")[1].split('px')[0]), reverse=False)
     recentList.click()
     time.sleep(WAIT_FOR_CHAT_TO_LOAD)
