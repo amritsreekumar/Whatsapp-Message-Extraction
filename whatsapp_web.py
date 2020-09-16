@@ -11,7 +11,7 @@ WAIT_FOR_CHAT_TO_LOAD = 9 # in secs
 
 message_dic = {}
 #place the chromedriver in the same path as your google chrome
-chrome_path = "/chromedriver"
+chrome_path = "path_to/chromedriver"
 driver = webdriver.Chrome(chrome_path)
 
 def chats():
