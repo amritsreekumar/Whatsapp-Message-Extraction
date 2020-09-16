@@ -10,14 +10,6 @@ class HelloHandler(RequestHandler):
         print("Request Received")
         initialtime = datetime.now()
         messages = whatsapp_web.scrape(None)
-        i = 0
-        for x in messages:
-        	if i%2 == 0:
-        		messages[i] = 'Peter -- ' + x
-        	else:
-        		messages[i] = 'Timothy -- ' + x
-        	i = i+1
-        #print(messages)
         self.write(json.dumps({'chatlog' : messages}))
         print("Request Completed")
         finaltime = datetime.now()
